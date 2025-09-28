@@ -1,0 +1,237 @@
+/* 
+    opacity:样式的显示，一般用值“0”表示消失，值“1”表示显示。
+    flex-direction: flex的装饰，column让flex成列由上至下排。
+    overflew:对于超出样式的部分修饰，这个组件就是利用overflew来把-con显示和隐藏。
+    :nth-child(num)：有同类名元素可以用这选择第几个元素。
+    filter：滤镜通常用于调整图像、背景和边框的渲染，这个组件利用了drop-shadow这个值
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    color: #fff;    
+}
+
+body{
+    background-color: #94ffe4ad;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wrap{
+    width: 100px;
+    /* width: 220px; */
+    height: 785px;
+    background-color: rgb(0, 0, 0, 0.8);
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: 0.5s ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: drop-shadow(0 0 2000px rgb(0, 255, 21));
+}
+
+
+.wrap:hover{
+    width: 220px;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #7a7a7a;
+    margin-left: 5px;
+    filter: drop-shadow(0 0 10px rgb(255, 145, 0))
+}
+
+.content{
+    position: absolute;
+    top: 45px;
+    left: 20px;
+    border-radius: 25px;
+}
+
+.btn{
+    width: 55px;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    left: 23px;
+    top: 15px;
+}
+
+.btn-item{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-item i{
+    position: absolute;
+    top: 6px;
+    opacity: 0;
+    transition: 0.5s;
+    color: black;
+}
+
+.btn-item i:hover{
+    opacity: 1;
+}
+
+.btn-item:nth-child(1){
+    background-color: #ff7777;
+}
+
+.btn-item:nth-child(2){
+    background-color: #97ff77;
+}
+
+.btn-item:nth-child(3){
+    background-color: #fcf376;
+}
+
+.nav-icon {
+    display: flex;
+    position: absolute;
+    width: 160px;
+    height: 55px;
+}
+
+.icon-con{
+    margin-left: 28px;
+    font-size: 14px;
+}
+
+.icon-con h2{
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.block{
+    width: 160px;
+    height: 55px;
+}
+
+.line{
+    width: 60px;
+    height: 1px;
+    background-color: rgba(245, 255, 255, 0.5);
+    margin: 20px 0px;
+    transition: 0.5s ;
+}
+
+.wrap:hover .line{
+    width: 175px;
+}
+
+.title{
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.item{
+    display: flex;
+}
+
+.con{
+    width: 0;   /* 宽度设置为0，然后用overflew：hidden隐藏超出内容 */
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+}
+
+.wrap:hover .con{
+    width: 100px;   /* 把宽度改成100px,显示就可以内容，加个动画过渡 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.licon{
+    width: 60px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help{
+    width: 60px;
+    background-color: #00000062;
+    border-radius: 20px;
+    border: 2px solid rgb(65, 65, 65);
+    transition: 0.5s;
+    overflow: hidden;
+    filter: drop-shadow(0 0 200px rgb(21, 116, 29));
+}
+
+.help .item{
+    border-bottom: 1px solid rgba(245, 255, 255, 0.25);
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.help .item:nth-child(4){
+    border: none;
+}
+
+.menu{
+    filter: drop-shadow(0 0 2000px rgb(0, 255, 255)) drop-shadow(0 0 1000px rgb(0, 157, 248));
+}
+
+.menu .item{
+    border-radius: 20px;
+    transition: 1s;
+}
+
+.menu .item:hover{
+    background-color: #00000060;
+
+}
+
+.help .light{
+    left: -6px;
+    background-color: #9efd81;
+}
+
+.light{
+    width: 6px;
+    height: 50px;
+    background: #ff7777;
+    position: absolute;
+    left: -26px;
+    transition: 0.2s;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.menu .item:hover .light{
+    left: -20px;
+}
+
+.help .item:hover .light{
+    left: 0;
+}
+
+.wrap:hover .help{
+    width: 180px;
+}

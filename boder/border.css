@@ -1,0 +1,85 @@
+/* 
+    @property：自定义CSS属性的类型(syntax)，初始值(initial-value)，继承规则(inherits)
+    background-image中的conic-gradient属性：是 CSS 里的一种 渐变背景，叫做 圆锥渐变，
+                                            它跟 linear-gradient（线性渐变）和 
+                                            radial-gradient（径向渐变）是同级的。
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: aliceblue;
+}
+
+body{
+    background-color: #020202e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #282636;
+    padding: 30px;
+    border-radius: 25px;
+    position: relative;
+}
+
+.card::after ,.card::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    background-image: conic-gradient(from var(--angle), transparent 70%, var(--color));
+    border-radius: 25px;
+    position: absolute;
+    z-index: -1;
+    animation: 4s identifier linear infinite;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@property --color{
+    syntax: "<color>";
+    inherits: false;
+    initial-value: blue;
+}
+
+@keyframes identifier {
+    0%{
+        --angle: 0deg;
+        --color: blue;
+    }
+    25%{
+        --angle: 90deg;
+        --color: yellow;
+    }
+    50%{
+        --angle: 180deg;
+        --color: red;
+    }
+    75%{
+        --angle: 270deg;
+        --color: green;
+    }  
+    100%{
+        --angle: 360deg;
+        --color: blue;
+    }
+}
+
+.card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}

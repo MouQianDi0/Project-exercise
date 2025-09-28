@@ -1,0 +1,68 @@
+/* 
+    backdrop-filter: blur()：组件背景模糊度，用于毛玻璃效果。
+    box-shadow: 水平偏移量 垂直偏移量 模糊半径 颜色，（可加多层阴影）
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Slab:wght@100..900&family=Story+Script&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Story Script", sans-serif;
+    font-weight: 600;
+    font-size: larger;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, rgb(252, 91, 91), rgb(65, 65, 255));
+    position: relative;
+}
+
+.glass{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    transition: 0.2s;
+}
+
+.glass:hover{
+    width: 320px;
+    height: 320px;
+    box-shadow: 30px 20px 30px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(0, 0, 0, 0.05) ;
+}
+
+
+
+.circle{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #ff5959;
+    right: 35%;
+    top: 35%;
+    z-index: -1;
+}
+
+.circle2{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #9959ff;
+    bottom: 35%;
+    left: 30%;
+    z-index: -1;
+}

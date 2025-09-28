@@ -1,0 +1,115 @@
+/* 
+    overflew-(x/y)：用于给某一样式增加滚动。
+    transform-origin：用于确定样式起始点，方便改变样式缩放
+    anchor：锚点定位，用于样式与样式之间的相对定位，先给父容器一个锚点anchor-name，然后
+            给子容器绑上这个锚点position-anchor，接着就可以用position-area给子容器一个位置
+            position-area的值时等比例的方位词：(left/right/center left/right/center)，也可以用
+            translate微调。
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to right, rgb(80, 80, 255), rgb(255, 80, 80));
+}
+
+.slide{
+    width: 800px;
+    height: 180px;
+    border: 1px solid rgba(201, 201, 201, 0.479);
+    box-shadow: 0px 0px 50px #ec8dff;
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    background-color: #ffffff0c;
+    position: relative;
+    
+}
+
+.content{
+    width: 800px;
+    display: flex;
+    border-radius: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    anchor-name: --slidershow;
+    scroll-snap-type: x mandatory;
+    scroll-marker-group: after;
+    animation: spin 5s infinite linear;
+}
+
+
+.content::scroll-marker-group{
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+}
+
+img::scroll-marker{
+    content: '';
+    height: 1em;
+    width: 1em;
+    background-color: #000000;
+}
+
+.content::-webkit-scrollbar{
+    display: none;
+}
+
+.content::scroll-button(right), .content::scroll-button(left){
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    font-size: 30px;
+    transition: 0.3s;
+    transform-origin: center center; /* 设置样式的几何中心 */
+    display: fixed;
+    position-anchor: --slidershow;
+    position-area: right center;
+    translate: -50%;
+}
+
+.content::scroll-button(right):hover, .content::scroll-button(left):hover{
+    transform: scale(1.2); /* 放大倍数 */
+}
+
+.content::scroll-button(right):disabled, .content::scroll-button(left):disabled{
+    opacity: 0;
+}
+
+.content::scroll-button(right) {
+    content: "→";
+    background: linear-gradient(to right, #a8a9ff, rgb(255, 80, 80));
+}
+
+.content::scroll-button(left) {
+    content: "←";
+    position-area: left center;
+    translate: 50%;
+    background: linear-gradient(to right, rgb(80, 80, 255), #ffb9b9);
+}
+
+img{
+    scroll-snap-align: center;
+    width: 180px;
+    height: 180px;
+    margin: 0 10px;
+    border-radius: 25px;
+    background-color: #bdbdbd42;
+}
+
+.content div{
+    border-radius: 25px;
+}
