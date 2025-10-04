@@ -1,0 +1,65 @@
+/* 
+    下划线的动画效果和背景色实体化效果
+*/
+
+@font-face {
+    font-family: 'MyFont';
+    src: url(/Font/BebasNeueRegular-2O7wW.ttf) format("truetype");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2f363e;
+}
+
+.underline{
+    width: 450px;
+    height: 40%;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: 0.5s;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.underline:hover{
+    width: 550px;
+    height: 50%;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #2f363e;
+    box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.7)
+}
+
+.underline span{
+    font-family: 'MyFont', sans-serif;
+    font-size: 30px;
+    background: linear-gradient(to right, #9c9c9c, #9c9c9c) no-repeat;
+    background-size: 0 2px;
+    background-position: right bottom ;
+    transition: background-size 1s;
+}
+
+.underline:hover span{
+    background-position: left bottom ;
+    background-size: 100% 2px;
+}
+
+.content{
+    width: 400px;
+}
